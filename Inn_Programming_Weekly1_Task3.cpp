@@ -1,7 +1,6 @@
 //Task 3
 
 #include <iostream>
-#include <string>
 
 int age;
 
@@ -9,6 +8,15 @@ int main()
 {
     std::cout << "How old are you?" << std::endl;
     std::cin >> age;
+
+    while (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::cout << "Thats not a number..." << std::endl;
+        std::cout << "How old are you? ";
+        std::cin >> age;
+    }
     if (age < 20) {
         std::cout << "You are young";
     }
